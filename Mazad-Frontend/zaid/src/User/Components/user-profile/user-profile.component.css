@@ -1,0 +1,77 @@
+.skills a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 4px 6px !important;
+    border: 1px solid rgba(100, 116, 139, 0.289);
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.skills a:hover {
+    border: 1px solid #c4c5c8;
+    color: #003285 !important;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0px 5px;
+}
+
+.profile-img {
+    margin-top: -12% !important;
+    margin-left: 5% !important;
+}
+
+/* .card {
+    border-radius: 10px !important;
+    border: none;
+    transition-duration: 0.5s;
+} */
+
+/* .card:hover {
+    transform: translateY(-3px);
+} */
+
+.card-img img {
+    border-radius: 10px !important;
+}
+
+.custom-card img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .small-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-align: left;
+  }
+  
+  .bids {
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: left;
+  }
+  
+  .price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #28a745;
+    text-align: left;
+  }
+  .feature-parent-card{
+    transition: ease-in-out;
+  }
+  .custom-product-card{
+    max-width: 200px;
+  }

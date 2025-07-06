@@ -1,0 +1,33 @@
+# Ignore build output directories for all projects
+**/bin/
+**/obj/
+
+# User-specific files
+**/*.user
+**/*.rsuser
+**/*.suo
+
+
+# Visual Studio and IDE specific files
+.vs/
+.vscode/
+.idea/
+*.sln.iml
+
+# Ignore config files
+**/appsettings.*.json
+
+# Ignore node_modules
+**/node_modules/
+
+# Ignore logs, temporary, and publish files
+**/*.log
+**/*.bak
+**/*.swp
+**/*.tmp
+**/publish/
+/Final-Project.sln
+/FinalApi/wwwroot/Contracts
+/FinalApi/wwwroot/Images/Categories
+/FinalApi/wwwroot/Images/Items
+/FinalApi/appsettings.json

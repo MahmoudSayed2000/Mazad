@@ -1,0 +1,92 @@
+.navbar-custom {
+  background-color: white;
+  border-bottom: 1px solid rgb(212, 211, 210) ;
+}
+.navbar-custom .navbar-brand, .navbar-custom .nav-link {
+  color: rgb(44, 40, 36) ;
+}
+.navbar-custom .nav-link:hover {
+  color: #e57a23;
+}
+.navbar-custom .nav-link svg:hover {
+  stroke: #e57a23;
+}
+.navbar-custom .dropdown-menu {
+  background-color: white;
+  border: none;
+}
+.navbar-custom .notifications-dropdown  .dropdown-item {
+  color: rgb(54, 53, 53);
+  white-space: normal; /* Allow text wrapping */
+  width:300px;
+  border-bottom: 1px solid rgb(120, 114, 108);
+}
+.navbar-toggler{
+  border: none;
+}
+.navbar-toggler:active{
+  border: none !important;
+}
+.navbar-custom .dropdown-item:hover {
+  background-color: white;
+
+  color: rgb(54, 53, 53);
+}
+.navbar-custom .dropdown-item .notification-time {
+  font-size: 0.8rem;
+  color: #746a62;
+}
+.form-control{
+  border-radius:30px !important ;
+
+}
+.form{
+  width:35%;
+  margin-left:31% !important;
+}
+.form input:focus{
+  border-color: #f67206 !important;
+  border-width: 0.5px;
+  box-shadow: none !important;
+  outline: none !important;
+
+}
+.navbar-custom .btn-primary {
+  background-color: rgb(229, 124, 35);
+  border: none;
+}
+.navbar-custom .btn-primary:hover {
+  background-color: #e57a23;
+}
+.see-all{
+  border-bottom: none !important;
+}
+.notification-text{
+  color: #746a62;
+}
+/* Adjusting dropdown position based on screen size */
+.notifications-dropdown {
+  margin-left: -150px; /* Move dropdown left before collapse */
+  
+}
+
+.profile-dropdown{
+  max-width: 13px !important;
+}
+
+@media (max-width: 991.98px) {
+  /* Reset dropdown margin on smaller screens */
+  .navbar-custom .notifications-dropdown{
+      margin-left: 0;
+  }
+  .navbar-custom .dropdown-item {
+   
+    width:100%;
+  }
+
+  .form{
+    width:100%;
+    margin:10px auto !important;
+
+  }
+}

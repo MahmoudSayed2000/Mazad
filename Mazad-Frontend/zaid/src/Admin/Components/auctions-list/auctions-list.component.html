@@ -1,0 +1,85 @@
+<div class="container mt-4">
+  <div [formGroup]="searchForm" class="search-container mb-4">
+    <div class="input-group mb-2">
+      <input type="text" class="form-control" placeholder="Search by name..." (keydown.enter)="onSearch($event)">
+    </div>
+    <div class="input-group mb-2">
+      <select class="form-control" (change)="updateSortOption($event)">
+        <option value="">Select Auction Status</option>
+        <option value="Open">Open</option>
+        <option value="Closed">Closed</option>
+        <option value="Live">Live</option>
+      </select>
+    </div>
+    <div class="input-group mb-2">
+      <select class="form-control" (change)="updateSortOption($event)">
+        <option value="">Select Payment Status</option>
+        <option value="Paid">Paid</option>
+        <option value="Unpaid">Unpaid</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Payment Status</th>
+          <th>Seller Name</th>
+          <th *ngIf="filterOption === 'Live'">Live URL</th>
+          <th *ngIf="filterOption === 'Paid'">Shipment Status</th>
+          <th>Image</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let auction of activeAuctions">
+          <td>{{ auction.item.name }}</td>
+          <td>{{ auction.id }}</td>
+          <td>{{ auction.isEnded ? 'Closed' : 'Open' }}</td>
+          <td>{{ auction.startDate | date:'yyyy-MM-dd' }}</td>
+          <td>{{ auction.endDate | date:'yyyy-MM-dd' }}</td>
+          <td>{{ auction.completed ? 'Paid' : 'Unpaid' }}</td>
+          <td>{{ auction.item.sellerName }}</td>
+          <td *ngIf="filterOption === 'Live'">
+            <a *ngIf="auction.id" [href]="'admin/auction-live-stream/' + auction.id" class="live-auction-link">View Live</a>
+          </td>
+          <td *ngIf="filterOption === 'Paid'">
+            <a *ngIf="auction.id" [href]="'admin/Shipment-Tracking/' + auction.id" class="live-auction-link">View</a>
+          </td>
+          <td>
+            <div *ngIf="auction.item.images && auction.item.images.length > 0; else noImage">
+              <img [src]="auction.item.images[0]" alt="Auction Image" class="auction-image" />
+            </div>
+            <ng-template #noImage>
+              <span>No Image Available</span>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="pageActive === 1">
+          <a class="page-link" (click)="pageActive !== 1 && onPageChange(pageActive - 1)">Previous</a>
+        </li>
+
+        <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+            [class.active]="i + 1 === pageActive">
+          <a class="page-link" (click)="onPageChange(i + 1)">{{ i + 1 }}</a>
+        </li>
+
+        <li class="page-item" [class.disabled]="pageActive === totalPages">
+          <a class="page-link" (click)="pageActive !== totalPages && onPageChange(pageActive + 1)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</div>

@@ -1,0 +1,139 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+}
+
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  flex: 1 1 200px; /* يضمن مرونة العرض */
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+}
+
+.table-wrapper {
+  margin-top: 20px;
+}
+
+/* تنسيق زر الإجراءات */
+.action-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  margin: 2px 0; /* تقليل المسافة بين الأزرار */
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+  display: inline-block; /* اجعل الأزرار تظهر بجانب بعضها */
+  width: 100%; /* جعل الزر يستخدم كامل عرض العمود */
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
+}
+
+/* تنسيق الجداول */
+ngx-datatable {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+ngx-datatable .datatable-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+ngx-datatable .datatable-body-row {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+ngx-datatable .datatable-header .datatable-header-cell {
+  font-weight: bold;
+}
+
+ngx-datatable-column {
+  min-width: 150px; /* عرض أدنى للأعمدة */
+  word-wrap: break-word; /* لكسر النصوص الطويلة */
+}
+
+ngx-datatable .datatable-body-cell {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* تصميم الريسبونسف */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  padding: 8px 12px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  transition: background-color 0.3s ease;
+}
+
+.page-link:hover {
+  background-color: #0056b3;
+}
+
+.page-item.active .page-link {
+  background-color: #0056b3;
+  font-weight: bold;
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* إضافة ميديا كويريز */
+@media (max-width: 768px) {
+  .input-group {
+    flex: 1 1 100%; /* جعل المدخلات تأخذ عرض كامل */
+  }
+
+  ngx-datatable-column {
+    width: 100%; /* عرض كامل للأعمدة */
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .input-group {
+    flex: 0 0 30%; /* عرض مخصص لأحجام الشاشات الكبيرة */
+  }
+}
+a.live-auction-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a.live-auction-link:hover {
+  text-decoration: underline;
+}

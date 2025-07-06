@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="content row mb-5 m-auto" style="width: 90%">
+    <!-- Top Statistics 4 Cards -->
+    <div class="row g-3 my-5">
+      <div class="col-xl-4 col-sm-12">
+        <div class="p-3 shadow rounded-1 bg-opacity-75 bg-success-subtle">
+          <div
+            class="card-header d-flex flex-column text-dark justify-content-between py-4"
+          >
+            <i class="fa-regular fa-square-check fs-1"></i>
+            <span class="opacity-75 my-2">Completed Auctions</span>
+            <span class="fw-semibold fs-3 mb-2">{{completedAuctions}} Auctions</span>
+            <div class="fs-6">
+              @if (((completedAuctions/allAuctionsCount)*100)>50) {
+                <i
+                  class="fa-solid fa-up-long fa-rotate-by"
+                  style="color: #00d146; --fa-rotate-angle: 50deg"
+                ></i>
+              }@else { <i
+                class="fa-solid fa-up-long fa-rotate-by"
+                style="color: #c70d00; --fa-rotate-angle: 130deg"
+              ></i>}
+              <span class="ms-2 fw-semibold opacity-75">%{{(completedAuctions/allAuctionsCount)*100}}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrapper">
+              <div>
+                <div id="spline-area-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-sm-12">
+        <div class="p-3 shadow bg-opacity-75 bg-danger-subtle">
+          <div
+            class="card-header d-flex flex-column text-dark justify-content-between py-4"
+          >
+            <i class="fa-regular fa-calendar-xmark fs-1"></i>
+            <span class="opacity-75 my-2">Ended Auctions</span>
+            <span class="fw-semibold fs-3 mb-2">{{endedAuctions}} Auctions</span>
+            <div class="fs-6">
+              @if (((endedAuctions/allAuctionsCount)*100)>50) {
+              <i
+                class="fa-solid fa-up-long fa-rotate-by"
+                style="color: #00d146; --fa-rotate-angle: 50deg"
+              ></i>
+            }@else { <i
+              class="fa-solid fa-up-long fa-rotate-by"
+              style="color: #c70d00; --fa-rotate-angle: 130deg"
+            ></i>}
+              <span class="ms-2 fw-semibold opacity-75">%{{(endedAuctions/allAuctionsCount)*100}}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrapper">
+              <div>
+                <div id="spline-area-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-sm-12">
+        <div class="p-3 shadow bg-opacity-75 bg-primary-subtle">
+          <div
+            class="card-header d-flex flex-column text-dark justify-content-between py-4"
+          >
+            <i class="fa-regular fa-credit-card fs-1"></i>
+            <span class="opacity-75 my-2">Completed Amount</span>
+            <span class="fw-semibold fs-3 mb-2">${{auctionsAmounts}}</span>
+            <div class="fs-6">
+              <i
+                class="fa-solid fa-up-long fa-rotate-by"
+                style="color: #c70d00; --fa-rotate-angle: 130deg"
+              ></i>
+              <span class="ms-2 fw-semibold opacity-75">%12</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrapper">
+              <div>
+                <div id="spline-area-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- charts section And Top Customers  -->
+    <div class="row g-3 my-5 align-items-center shadow py-2 px-1">
+          <ngx-charts-bar-vertical
+          class="col-xl-12 mb-12 "
+          style="height: 70vh;"
+          scheme="cool"
+          [results]="auctionsBidsAmount"
+          [gradient]="false"
+          [xAxis]="true"
+          [yAxis]="true"
+          [animations]="true">
+          </ngx-charts-bar-vertical>
+      </div>
+
+
+    <!-- Sales by Product And Sales By Category -->
+    <div class="row justify-content-between align-items-center">
+      <div class="col-lg-4 shadow py-1">
+        <div class="card card-default shadow">
+          <div class="card-header">
+            <h2>Top Five Sellers</h2>
+          </div>
+          <div class="p-3">
+            <table class="table table-borderless table-thead-border">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th class="text-right">Auctions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (seller of topFiveSeller; track $index) {
+                <tr>
+                  <td class="text-dark font-weight-bold">{{seller.name}}</td>
+                  <td class="text-right">{{seller.count}}</td>
+                </tr>
+              }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <ngx-charts-pie-chart
+      class="col-lg-8"
+      [view]="viewCat"
+      scheme="cool"
+      [results]="category"
+      [gradient]="false"
+      legendTitle="Categories"
+      [legend]="true"
+      [legendPosition]="legendCategoryPosition"
+      [labels]="true"
+      [doughnut]="false"
+      [explodeSlices]="true"
+      [animations]="true"
+      >
+    </ngx-charts-pie-chart>
+
+    </div>
+
+  </div>
+</div>

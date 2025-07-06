@@ -1,0 +1,61 @@
+  <div class="container py-3" style="height: 90vh;">
+    <div class="row"  style="height: 100%;">
+      <div class="col-md-12">
+        <div class="card" id="chat3" style="border-radius: 15px;height: 100%;">
+          <div class="p-3" style="height: 100%;">
+            <div class="row">
+              <!-- Search and Chat List -->
+              <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+                <div class="p-3">
+                  <!-- Search Input -->
+                  <div class="input-group rounded mb-3">
+                    <input type="search" class="form-control rounded search-input" [(ngModel)]="searchTerm" (input)="updateFilteredMessages()" placeholder="Search" aria-label="Search" />
+                    <span class="input-group-text border-0">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </div>
+
+                  <!-- Chat List -->
+                  <div id="chat-list" class="chat-list">
+                    <ul class="list-unstyled mb-0">
+                    @if (allChats==undefined) {
+                    <li class="p-2 border border-1 rounded-2 my-1 chat-list-item">
+                          <div class="bg-danger bg-opacity-75 p-2 rounded-2">
+                            <p class="text-center pt-2 fw-semibold">You Haven't Chats</p>
+                          </div>
+                        </li>
+                      }
+                      @for (chat of allChats; track $index) {
+                      <li class="p-2 border border-1 rounded-2 my-1 chat-list-item overflow-hidden">
+                        <a routerLink="/shared/chat/message/{{chat.id}}" class="text-decoration-none">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="d-flex flex-row align-items-center">
+                            @if (chat.receiverImage) {<img src="{{chat.receiverImage}}" alt="avatar" class="chat-avatar">}
+                            @else {<i class="fa-solid fa-user"></i>}
+
+                            <div class="pt-1 ms-2">
+                              <p class="fw-bold mb-0 chat-sender-name">{{ chat.receiverName }}</p>
+                              <p class="small text-muted mb-0 chat-message-text" innerHTML="{{chat.lastMessage|shortMessage}}"></p>
+                            </div>
+                          </div>
+                          <p class="small text-muted mb-0 chat-time">{{ chat.messageDate|date:"shortTime" }}</p>
+                        </div>
+                      </a>
+                      </li>
+                    }
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat Messages and Input -->
+              <div class="col-md-6 col-lg-7 col-xl-8" style="height: 60vh;">
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,151 @@
+/* General Styles */
+body {
+  font-family: "Ubuntu", sans-serif;
+  color: #003285; /* Adjusted text color */
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+/* Contact Form Styles */
+.card {
+  border-radius: 0.25rem; /* Smaller border-radius */
+  border: 1px solid #ffffff; /* Adjusted border color */
+  background-color: #ffffff; /* Adjusted background color */
+}
+
+.card-body {
+  padding: 1rem; /* Smaller padding */
+}
+
+
+
+/* Validation Styles */
+.invalid-feedback {
+  color: rgb(229, 124, 35); /* Adjusted danger color */
+  display: block;
+}
+
+/* Map Styles */
+#kt_contact_map {
+  border-radius: 0.25rem; /* Smaller border-radius */
+  border: 1px solid rgb(229, 124, 35);  /* Adjusted border color */
+  overflow: hidden;
+}
+
+iframe {
+  border: none;
+}
+
+/* Background Color */
+.bg-primary {
+  background-color: rgb(229, 124, 35); /* Choose your desired background color */
+  padding: 0.5rem; /* Smaller padding */
+  border-radius: 0.25rem; /* Smaller border radius */
+}
+
+/* Additional styling for the span element */
+.svg-icon {
+  margin-bottom: -8px; /* Adjusted margin */
+  line-height: 0.875rem; /* Smaller line-height */
+  display: inline-flex; /* Ensure the background color surrounds the SVG */
+  align-items: center; /* Center align the SVG vertically */
+  justify-content: center; /* Center align the SVG horizontally */
+}
+
+.svg-icon.svg-icon-primary { 
+  color: #009ef7;
+}
+
+.btn-secondary {
+  background-color: rgb(229, 124, 35) ; /* Adjusted background color */
+  border-color: rgb(229, 124, 35); /* Adjusted border color */
+  color: #ffffff; /* White text color */
+  font-size: 0.875rem; /* Smaller font size */
+  padding: 0.5rem 1rem; /* Smaller padding */
+}
+
+.btn-secondary:hover {
+  background-color: rgba(229, 124, 35, 0.845); /* Adjusted hover background color */
+  border-color: rgba(229, 124, 35, 0.845); /* Adjusted hover border color */
+}
+
+/* Additional Card Styles */
+.text-primary {
+  color: #025464; /* Adjusted text color */
+}
+
+.bg-secondary {
+  background-color: rgb(229, 124, 35) ; /* Adjusted background color */
+}
+
+/* Input Styles */
+.form-control {
+  border-radius: 0.25rem; /* Smaller border-radius */
+  padding: 0.25rem 0.5rem; /* Smaller padding */
+  background-color: #f4f4f4; /* Adjusted background color */
+  border-color: #f4f4f4; /* Adjusted border color */
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+.form-control:focus {
+  border-color: rgb(229, 124, 35) ; /* Adjusted focus border color */
+  box-shadow: 0 0 0 0.1rem rgba(229, 124, 35, 0.25); /* Smaller focus box shadow */
+}
+
+.social-icons-container {
+  margin: 20px 0; /* Smaller margin */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icon {
+  width: 30px; /* Smaller width */
+  height: 30px; /* Smaller height */
+  margin: 0 20px; /* Smaller margin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F8F1F1;
+  background-color: #025464;
+  border-radius: 50%;
+  font-size: 1.2rem; /* Smaller font size */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon.facebook {
+  background-color: #3b5998;
+}
+
+.social-icon.twitter {
+  background-color: #00aced;
+}
+
+.social-icon.linkedin {
+  background-color: #0077b5;
+}
+
+.social-icon.instagram {
+  background-color: #e4405f;
+}
+
+.social-icon:hover {
+  background-color: rgb(229, 124, 35) ;
+  color: #F8F1F1;
+}
+
+@media (min-width: 576px) {
+  .col-sm-6 {
+    flex: 0 0 auto;
+    width: 50%; 
+  }
+}
+
+.g-5, .gy-5 {
+  --bs-gutter-y: 1rem; /* Smaller gutter size */
+}
+
+.mb-6 {
+  margin-bottom: 50px !important; /* Smaller margin-bottom */
+}

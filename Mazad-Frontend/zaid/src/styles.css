@@ -1,0 +1,301 @@
+
+/* You can add global styles to this file, and also import other style files */
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+/* carousel button style start*/
+
+
+.parent-of-card .owl-next{
+  background-color: rgb(176, 176, 176) !important;
+  border-radius: 20Px !important;
+  width: 30px !important;
+  height: 30px !important;
+  font-weight: 900 !important;
+
+  background-color: rgb(176, 176, 176) !important;
+  border-radius: 20Px !important;
+  width: 30px !important;
+  height: 30px !important;
+  font-weight: 900 !important;
+
+  position: absolute;
+  top: 40%;
+  left:  97%;
+  left:  97%;
+}
+.parent-of-card .owl-prev{
+  background-color: rgb(176, 176, 176) !important;
+  border-radius: 20Px !important;
+  width: 30px !important;
+  height: 30px !important;
+  font-weight: 900 !important;
+  background-color: rgb(176, 176, 176) !important;
+  border-radius: 20Px !important;
+  width: 30px !important;
+  height: 30px !important;
+  font-weight: 900 !important;
+  position: absolute;
+  top: 40%;
+  right:  98%;
+
+  right:  98%;
+
+}
+/* carousel button style end*/
+@media screen and (max-width: 700px) {
+  .parent-of-card .owl-prev {
+    display: none !important;
+  }
+  .parent-of-card .owl-next {
+    display: none !important;
+  }
+}
+
+/* Home Category Carousel button start*/
+
+.categoryCarousel .owl-next{
+  background-color: #eeeeee !important;
+  border-radius: 20Px !important;
+  width: 30px !important;
+  height: 30px !important;
+  font-weight: 900 !important;
+  position: absolute;
+  bottom: 45%;
+  bottom: 45%;
+  left: 98%;
+}
+
+
+.categoryCarousel .owl-prev{
+  background-color: #eeeeee !important;
+  border-radius: 20Px !important;
+  width: 30px !important;
+  height: 30px !important;
+  font-weight: 900 !important;
+  position: absolute;
+  bottom: 45%;
+  bottom: 45%;
+  right: 98%;
+}
+
+@media screen and (max-width: 700px) {
+  .categoryCarousel .owl-next{
+    display: none !important;
+  }
+  .categoryCarousel .owl-prev {
+    display: none !important;
+  }
+}
+/* Home Category Carousel button end*/
+
+
+/* Home Testimonial Carousel dot start */
+.testimonialOption .owl-dot{
+  width: 20px !important;
+  margin-left: 25px !important;
+  border-radius: 20px !important;
+  height: 10px !important;
+
+}
+.testimonialOption .owl-dot span{
+  width: 50px !important;
+  background-color: rgb(208, 208, 208) !important;
+  background-color: rgb(208, 208, 208) !important;
+}
+.testimonialOption .owl-dot.active span{
+  background-color: rgb(146, 146, 146) !important;
+  background-color: rgb(146, 146, 146) !important;
+}
+/* Home Testimonial Carousel dot end */
+
+
+
+ body{
+    border-color: #ffffff !important;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+/* english font start*/
+  .ubuntu-light {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ubuntu-regular {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-medium {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ubuntu-bold {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-light-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ubuntu-regular-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-medium-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ubuntu-bold-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+/* english font end*/
+
+
+
+/* You can add global styles to this file, and also import other style files */
+
+
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+.btn-primary{
+  background-color: rgb(44, 40, 36)!important;
+  border-color:rgb(44, 40, 36) !important;
+border-radius: 10px;
+ 
+}
+.btn-primary:hover{
+  background-color:rgba(44, 40, 36, 0.577) !important;
+  border-color:rgb(44, 40, 36, 0.577) !important;
+
+}
+.btn-outline-primary{
+  border-color: rgba(44, 40, 36)!important;
+  color: rgba(44, 40, 36)!important;
+  border-radius: 10px;
+
+
+}
+.btn-outline-primary:hover{
+  background-color: rgba(44, 40, 36)!important;
+  border-color: rgba(44, 40, 36) !important;
+  color: #ffffff!important;
+}
+.btn-secondary{
+  background-color: rgb(229, 124, 35)!important;
+  border-color: rgb(229, 124, 35) !important;
+  color: #ffffff !important;
+  border-radius: 10px;
+
+}
+.btn-secondary:hover{
+  background-color: rgb(231, 138, 57)!important;
+  border-color: rgb(231, 138, 57) !important;
+}
+
+
+a{
+  color: rgba(0, 0, 0, 0.65);
+}
+body{
+  background-color:white !important;
+
+}
+.btn-link{
+  color: rgb(229, 124, 35)!important;
+  padding: 0px !important;
+}
+.btn-link:hover{
+opacity: 0.7;
+}
+.bg-secondary{
+  background-color: rgb(229, 124, 35)!important;
+}
+.bg-primary{
+  background-color: rgba(44, 40, 36)!important;
+}
+.text-primary{
+  color: rgba(44, 40, 36) !important;
+}
+.link-primary{
+  color: rgba(44, 40, 36) !important;
+}
+.text-orange{
+  color: rgb(229, 124, 35)!important;
+}
+/* english font start*/
+.ubuntu-light {
+font-family: "Ubuntu", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+
+.ubuntu-regular {
+font-family: "Ubuntu", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.ubuntu-medium {
+font-family: "Ubuntu", sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+.ubuntu-bold {
+font-family: "Ubuntu", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.ubuntu-light-italic {
+font-family: "Ubuntu", sans-serif;
+font-weight: 300;
+font-style: italic;
+}
+
+.ubuntu-regular-italic {
+font-family: "Ubuntu", sans-serif;
+font-weight: 400;
+font-style: italic;
+}
+
+.ubuntu-medium-italic {
+font-family: "Ubuntu", sans-serif;
+font-weight: 500;
+font-style: italic;
+}
+
+.ubuntu-bold-italic {
+font-family: "Ubuntu", sans-serif;
+font-weight: 700;
+font-style: italic;
+}
+/* english font end*/
+.text-primary {
+  color: rgba(44, 40, 36)!important;
+
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

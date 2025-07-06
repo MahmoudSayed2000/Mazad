@@ -1,0 +1,356 @@
+<div class="container">
+<div class="main  p-xl-5 p-3">
+    <div class="row justify-content-between ">
+
+        <div class="item-title">
+            <h1>{{ auctionDetails.item.name }}</h1>
+        </div>
+        <div class="col-xl-7 row mb-5">
+            <div id="itemimages" class="carousel slide col-12 mb-5" data-bs-ride="carousel">
+                <div class="carousel-inner mb-5">
+                    <ng-container *ngFor="let image of auctionDetails.item.images; let i = index">
+                        <div class="carousel-item" [class.active]="i === 0">
+                            <img [src]="image" class="d-block w-100" alt="Auction Image {{ i + 1 }}">
+                        </div>
+                    </ng-container>
+                </div>
+
+                <a class="carousel-control-prev" href="#itemimages" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#itemimages" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+
+                <div class="carousel-indicators">
+                    <ng-container *ngFor="let image of auctionDetails.item.images; let i = index">
+                        <button type="button" [attr.data-bs-target]="'#itemimages'" [attr.data-bs-slide-to]="i"
+                                [class.active]="i === 0" aria-current="true" [attr.aria-label]="'Slide ' + (i + 1)">
+                            <img [src]="image" class="d-block w-100" alt="Thumbnail Image {{ i + 1 }}">
+                        </button>
+                    </ng-container>
+                </div>
+            </div>
+
+            <br>
+        </div>
+
+        <div class="bid col-xl-5  justify-content-center  p-md-0 mt-5 mt-md-0">
+        @if(auctionDetails.isEnded == false){
+          @if(isUpcoming==false){
+            <!-- LiveAuctions -->
+            <div class="bid-info-place  mb-3">
+                <div class="bid-info row bg-light  mb-3">
+                    <div class="heighest-bid col-6">
+                        <p>Current price</p>
+                        @if (auctionDetails.bids.length==0) {
+                          <h5>{{auctionDetails.item.startPrice}}EGP </h5>
+                        }@else {
+                           
+                            <h5>{{auctionDetails.currentPrice}}EGP</h5>
+                        }
+
+                        <p class="estimate-price">Start price: {{auctionDetails.item.startPrice}}EGP</p>
+                    </div>                         
+                    <div class="bid-ends-in col-6">
+                        <p>Ends in:</p>
+                        <h5 id="end-time">{{ countdown }}</h5>
+                        <p class="end-date">{{ auctionEndDate | date: 'mediumDate' }}</p>
+                    </div>
+                </div>
+
+                @if ( paymentCount == 0){
+
+                  <div class="place-bid text-center ">
+                    <input type="number" [disabled]="true" name="" disabled id="" class="form-control">
+                    <a role="button" (click)="notAllowed()" class=" btn btn-primary w-100 mt-3 mb-1">
+                      you can't add bid
+                    </a>
+                    <p class="bid-limits ">You can't Add Bid because This Your Auction.</p>
+                </div>
+                }@else if(paymentCount == 4) {
+                  <div class="place-bid text-center ">
+                    <input type="number" disabled name="" id="" class="form-control">
+                    <a routerLink="/login" class=" btn btn-dark w-100 mt-3 mb-1">Login Before bid in Auction</a>
+                    <p class="bid-limits ">Minimum bid: {{auctionDetails.item.startPrice}} EGP. Or enter your own, higher max bid. The bid will be
+                        converted into EGP.</p>
+                </div>
+                }@else if (paymentCount == 1){
+                  <div class="place-bid text-center">
+                    <input type="number" name="" disabled id="" class="form-control">
+                    <a routerLink="/user/payment" class=" btn btn-danger w-100 mt-3 mb-1">
+                      You Haven't Payment Method
+                    </a>
+                    <p class="bid-limits">Check if You have Payment Email in your Profile.</p>
+                </div>
+                } @else if (paymentCount == 2){
+                  <div class="place-bid text-center">
+                    <input type="number" placeholder="Choose one to Bid The First Price :{{auctionDetails.item.startPrice}}EGP" name="" disabled id="" class="form-control">
+                    <a (click)="firstPayment(1)" class=" btn btn-primary w-50 mt-3 mb-1">
+                      <i class="fa-brands fa-stripe-s"></i>
+                    </a>
+                    <a (click)="firstPayment(0)" class=" btn btn-primary w-50 mt-3 mb-1">
+                      <i class="fa-brands fs-5 fa-paypal"></i>
+                    </a>
+                    <p class="bid-limits ">You must Bid the First Amount to Continue in this Auction.</p>
+                </div>
+                }@else if (paymentCount == 3){
+                  <div class="place-bid text-center ">
+                    <input type="number" disabled name="" id="" class="form-control">
+                    <a role="button" (click)="firstPayment(method)" class=" btn btn-dark w-100 mt-3 mb-1">Bid The First Price</a>
+                    <p class="bid-limits ">You must Bid the First Amount to Continue in this Auction.</p>
+                </div>
+              }
+                @else if(paymentCount == 5) {
+                  <div class="place-bid text-center ">
+                    <input #bid type="number" name="" id="" class="form-control">
+                    <a role="button" class=" btn btn-secondary w-100 mt-3 mb-1" (click)="placeBid(bid.value)">Place A Bid</a>
+                    <p class="bid-limits ">Minimum bid: {{auctionDetails.item.startPrice}} {{UserCurrency}} . Or enter your own, higher max bid. The bid will be
+                        converted into EGP.</p>
+                </div>
+                }
+
+                <!-- roles accordion  -->
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;" id="headingOne">
+                            <h5 class="mb-0 ">
+                                <button class="btn" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    See Validations and Roles
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse " aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body" style="text-align: center;">
+                                Minimum bid: {{auctionDetails.item.startPrice}} {{UserCurrency}}. Or enter your own, higher max bid. The bid will be
+                                converted into EGP.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+              @if(auctionDetails.bids.length>0){
+                <p class="estimate-price">Last bid: {{allBids[allBids.length-1].bidAmount}}EGP</p>
+                <div class="bid-history mt-0 mb-5 overflow-y-scroll overflow-x-hidden h-25">
+                    <p class="title">Bid history</p>
+                    @for (bid of allBids.slice().reverse(); let i = $index; track $index;) {
+                    <div class="row single-bid mb-1"
+                      [ngClass]="{'highlight': i === 0 && highlightNewBid}">
+
+                        <div class="col-4 bidder">{{bid.buyerName}}</div>
+                        <div class="col-4 bid-date">{{bid.bidTime|date:'mediumTime'}}</div>
+                        <div class="col-4 bid-amount">{{bid.bidAmount}}</div>
+
+                    </div>
+                  }
+
+                </div>
+              }
+              @else{
+                <div class="bid-history mt-0 mb-5 ">
+                    <p class="title">Bid history</p>
+                    <div class="row single-bid mb-1 justify-content-center">
+                      There is no Bids on This auction yet.
+                    </div>
+
+                </div>
+
+              }
+            }
+            @else{
+                <!-- upcomingAuctions -->
+                <div class="bid-info-place  mb-3">
+                    <div class="bid-info row bg-light  mb-3">
+                        <div class="heighest-bid col-6">
+                            <p class="estimate-price">Start Price: {{auctionDetails.item.startPrice}}EGP</p>
+                        </div>
+                        <div class="bid-ends-in col-6">
+                            <p>Starts in:</p>
+                                <h5 id="end-time">{{ auctionDetails.startDate | date: 'shortTime' }}</h5>
+                                <p class="end-date">{{ auctionDetails.startDate | date: 'mediumDate' }}</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- roles accordion  -->
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" style="text-align: center;" id="headingOne">
+                                <h5 class="mb-0 ">
+                                    <button class="btn" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        See Validations and Roles
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne"
+                                data-parent="#accordion">
+                                <div class="card-body" style="text-align: center;">
+                                    Minimum bid: {{auctionDetails.item.startPrice}} {{UserCurrency}}. Or enter your own, higher max bid. The bid will be
+                                    converted into EGP.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bid-history mt-0 mb-5 ">
+                    <p class="title">Bid history</p>
+                    <div class="row single-bid mb-1 justify-content-center">
+                      There is no Bids on This auction yet.
+                    </div>
+
+                </div>
+
+            }
+        }
+        @else{
+                    <!-- ended Auctions -->
+                    <div class="bid-info-place  mb-3">
+                        <div class="bid-info row bg-light  mb-3 justify-content-center">
+                           <h5>Ended</h5>
+                        </div>
+                    </div>
+
+                @if(auctionDetails.bids.length>0){
+                    <div class="bid-history mt-0 mb-5 overflow-y-scroll overflow-x-hidden h-25">
+                        <p class="title">Bid history</p>
+                        @for (bid of allBids.slice().reverse(); let i = $index; track $index;) {
+                        <div class="row single-bid mb-1"
+                          [ngClass]="{'highlight': i === 0 && highlightNewBid}">
+
+                            <div class="col-4 bidder">{{bid.buyerName}}</div>
+                            <div class="col-4 bid-date">{{bid.bidTime|date:'mediumTime'}}</div>
+                            <div class="col-4 bid-amount">{{bid.bidAmount}}</div>
+
+                        </div>
+                      }
+
+                    </div>
+                }
+                @else{
+                    <div class="bid-history mt-0 mb-5 ">
+                        <p class="title">Bid history</p>
+                        <div class="row single-bid mb-1 justify-content-center">
+                          There is no Bids on This auction.
+                        </div>
+
+                    </div>
+
+                }
+
+            }
+
+
+
+            <div class="payment mb-5">
+                <p class="title">Payment options for this item</p>
+                <svg viewBox="0 0 3311 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_135_54)">
+                        <path
+                            d="M119.971 6.0924C106.903 6.0924 95.2244 12.8866 95.2244 25.4393C95.2244 39.8349 115.937 40.8292 115.937 48.0611C115.937 51.1062 112.458 53.832 106.515 53.832C98.0824 53.832 91.7796 50.0232 91.7796 50.0232L89.0827 62.6903C89.0827 62.6903 96.3434 65.9076 105.983 65.9076C120.271 65.9076 131.514 58.7799 131.514 46.0125C131.514 30.8009 110.715 29.8362 110.715 23.1237C110.715 20.7383 113.571 18.1247 119.497 18.1247C126.182 18.1247 131.636 20.8947 131.636 20.8947L134.276 8.66044C134.276 8.66044 128.341 6.0924 119.971 6.0924ZM0.408478 7.01574L0.092041 8.86242C0.092041 8.86242 5.58992 9.87168 10.5416 11.8849C16.9174 14.1935 17.3716 15.5375 18.4454 19.7117L30.1463 64.9554H45.8315L69.9958 7.01574H54.3465L38.8196 46.4092L32.4836 13.0175C31.9026 9.1958 28.9593 7.01574 25.3566 7.01574H0.408478ZM76.2886 7.01574L64.0122 64.9554H78.9351L91.1683 7.01574H76.2886ZM159.519 7.01574C155.92 7.01574 154.014 8.94814 152.615 12.325L130.752 64.9554H146.401L149.429 56.1837H168.494L170.335 64.9554H184.143L172.097 7.01574H159.519ZM161.554 22.6693L166.193 44.4111H153.765L161.554 22.6693Z"
+                            fill="#1434CB"></path>
+                    </g>
+                    <g clip-path="url(#clip1_135_54)">
+                        <path d="M256.553 7.70003H287.918V64.3H256.553V7.70003Z" fill="#FF5F00"></path>
+                        <path
+                            d="M258.544 36.0014C258.544 24.5015 263.921 14.3015 272.186 7.70147C266.112 2.90148 258.445 0.00146484 250.081 0.00146484C230.266 0.00146484 214.235 16.1015 214.235 36.0014C214.235 55.9014 230.266 72.0014 250.081 72.0014C258.445 72.0014 266.112 69.1015 272.186 64.3015C263.921 57.8015 258.544 47.5014 258.544 36.0014Z"
+                            fill="#EB001B"></path>
+                        <path
+                            d="M330.235 36C330.235 55.9 314.205 72 294.39 72C286.026 72 278.359 69.1 272.285 64.3C280.649 57.7 285.926 47.5 285.926 36C285.926 24.5 280.55 14.3 272.285 7.70004C278.359 2.90004 286.026 3.05176e-05 294.39 3.05176e-05C314.205 3.05176e-05 330.235 16.2 330.235 36Z"
+                            fill="#F79E1B"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_135_54">
+                            <rect width="184.235" height="60" fill="white" transform="translate(0 6)"></rect>
+                        </clipPath>
+                        <clipPath id="clip1_135_54">
+                            <rect width="116" height="72" fill="white" transform="translate(214.235)"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-5 mt-md-2">
+        <div class="item-desc mb-4">
+            <p class="title">Description</p>
+            <p>{{auctionDetails.item.description}}</p>
+        </div>
+
+        <p class="title">Seller Information</p>
+        <div class="seller-info">
+            <div class="row">
+                <div class="">
+                    <h5>
+                        <a href="#profile" class="text-decoration-none">Name : {{ auctionDetails.item.sellerName }}</a>
+                    </h5>
+                </div>
+                <div class=" text-right">
+                    <div class="mb-2">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                        <span>(4.0)</span> <!-- Average rating -->
+                    </div>
+                </div>
+            </div>
+            @if ( paymentCount == 0){
+
+        }@else{
+            <div class="mb-2">
+                <a [routerLink]="['/user/user-profile',auctionDetails.item.sellerId]" class="btn btn-link">View All Reviews</a>
+            </div>
+        }
+        </div>
+    </div>
+    <h3 class="text-center mb-5">Similar Auctions</h3>
+    <div id="cardCarousel" class="carousel slide justify-content-center mb-3" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Outer loop to iterate over groups of similar auctions -->
+        <div *ngFor="let group of groupedSimilarAuctions; let i = index" class="carousel-item" [class.active]="i === 0">
+          <div class="row">
+            <!-- Inner loop to iterate over each auction in the group -->
+            <div *ngFor="let auction of group" class="col-md-4">
+              <div class="card">
+                <a [routerLink]="['/action/auction-details', auction.id]">
+                    <img [src]="auction.item.images[0]"
+                    class="card-img-top" [alt]="auction.item.name">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ auction.item.name }}</h5>
+                  <p class="card-text start-price text-center">Starting price: {{ auction.item.startPrice |number}} EGP</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel controls -->
+      <a class="carousel-control-prev" href="#cardCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#cardCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+
+</div>
+</div>

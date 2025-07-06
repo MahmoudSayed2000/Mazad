@@ -1,0 +1,11 @@
+th{
+    font-size: 15px;
+    font-weight: 500;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:white;
+  }

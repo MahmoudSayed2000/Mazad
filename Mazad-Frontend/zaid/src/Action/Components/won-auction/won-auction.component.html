@@ -1,0 +1,109 @@
+<div class="container mt-5 mb-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-primary text-start">Invoice Details</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="row">
+        <!-- Auction Item Image -->
+
+        <div class=" col-md-4 align-items-center">
+          <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <div *ngFor="let image of completeAuctionPayment.images; let j = index" [class.active]="j === 0"
+              class="carousel-item" style="cursor: pointer;">
+              <img [src]="image"
+                 class="d-block ">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExample'"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselExample'"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        <!-- Auction Item and Invoice Details -->
+        <div class="col-md-8 mt-2">
+          <div class="row justify-content-center text-start mt-3 mb-3">
+
+            <h5 class="card-title text-orange fs-3">Congratulations! You've won the auction.</h5>
+            <p class="card-text text-secondary fs-5">Please review your invoice and proceed to payment.</p>
+
+        </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text text-secondary">ID: <strong> #{{completeAuctionPayment.id}}</strong> </p>
+              <p class="card-text text-secondary">Creation Date: <strong> {{completeAuctionPayment.creationDate|date:"medium"}}</strong> </p>
+              <p class="card-text text-secondary">Status: <span class="badge bg-secondary text-black fw-bold">
+                  {{completeAuctionPayment.status}}</span> </p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text text-secondary">Item Name: <strong> {{completeAuctionPayment.itemName}}</strong> </p>
+              <p class="card-text text-secondary">Item Description: <strong> {{completeAuctionPayment.itemDescription}}</strong></p>
+              <p class="card-text text-secondary">Start Price: <strong> {{completeAuctionPayment.startPrice}}EGP</strong></p>
+              <p class="card-text text-secondary">All Bids: <strong> {{completeAuctionPayment.totalBids}}EGP</strong></p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text text-secondary">To: <strong> {{completeAuctionPayment.sellerName}}</strong> </p>
+              @if (completeAuctionPayment.Street) {
+              <p class="card-text text-secondary">Address: <strong>{{completeAuctionPayment.Street}},
+                 {{completeAuctionPayment.city}}, {{completeAuctionPayment.country}}</strong></p>
+                }
+                @if (completeAuctionPayment.phoneNumber) {
+              <p class="card-text text-secondary">Phone Number: <strong> {{completeAuctionPayment.phoneNumber}}</strong></p>
+            }
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-secondary">{{(completeAuctionPayment.startPrice+completeAuctionPayment.totalBids)}} </h6>
+              <p class="card-text text-secondary">
+               + {{((completeAuctionPayment.startPrice+completeAuctionPayment.totalBids)*0.05)}}EGP  (5% profit) </p>
+              <p class="card-text text-primary fs-3"><strong> Total Price: 
+             {{((completeAuctionPayment.startPrice+completeAuctionPayment.totalBids)*0.05)+(completeAuctionPayment.startPrice+completeAuctionPayment.totalBids)}}EGP</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Payment and Decline Buttons -->
+      <div class="d-flex justify-content-end gap-4 mt-3 mb-3">
+        <a class="btn btn-primary"
+          (click)="placeTotalAuction(
+            completeAuctionPayment.totalBids,
+            completeAuctionPayment.method,
+            completeAuctionPayment.currency,
+            completeAuctionPayment.id)">
+          Proceed to Payment
+        </a>
+
+        <a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cancelModalLabel">you sure you want to cancel?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <p class="text-secondary"> If you cancel, the 10% deposit paid at the beginning of the auction will not be refunded to your account.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, Keep It</button>
+        <a type="button" (click)="back()" data-bs-dismiss="modal" class="btn btn-light">Yes, Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>

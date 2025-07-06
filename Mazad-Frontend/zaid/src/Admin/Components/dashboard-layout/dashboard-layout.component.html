@@ -1,0 +1,224 @@
+<html>
+
+
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-custum sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="">
+        <div class="sidebar-brand-text mx-3">Zaid</div>
+      </a> -->
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="./home">
+          <i class="fas fa-fw fa-tachometer-alt "></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <!-- <div class="sidebar-heading">
+        Interface
+      </div> -->
+      <!-- Users -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers"
+          aria-expanded="false" aria-controls="collapseUsers">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Users</span>
+        </a>
+
+        <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="./users-list">Users list</a>
+          </div>
+        </div>
+      </li>
+    
+<!-- Items -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseItems"
+          aria-expanded="false" aria-controls="collapseItems">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Items</span>
+        </a>
+
+        <div id="collapseItems" class="collapse" aria-labelledby="headingItems" data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="items-review">Review Item</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Auctions -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAuctions"
+          aria-expanded="false" aria-controls="collapseEvents">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Auctions</span>
+        </a>
+
+        <div id="collapseAuctions" class="collapse" aria-labelledby="headingAuctions"
+          data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="./auctions-list">Auctions List</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Complaints -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseComplints"
+          aria-expanded="false" aria-controls="collapseComplints">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>Complints</span>
+        </a>
+
+        <div id="collapseComplints" class="collapse" aria-labelledby="headingComplints" data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="./complaints-list"> Complin list</a>
+          </div>
+        </div>
+      </li>
+      <!-- Events -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvents"
+          aria-expanded="false" aria-controls="collapseEvents">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Events</span>
+        </a>
+
+        <div id="collapseEvents" class="collapse" aria-labelledby="headingEvents" data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="./add-event">Add Event</a>
+            <a class="collapse-item" routerLink="./events-list">Events List</a>
+          
+          </div>
+        </div>
+      </li>
+      <!-- Reviews -->
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReviews"
+          aria-expanded="false" aria-controls="collapseReviews">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Reviews</span>
+        </a>
+
+        <div id="collapseReviews" class="collapse" aria-labelledby="headingReviews" data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="items-review">Items Review</a>
+            <a class="collapse-item" routerLink="profile-review">User Review</a>
+          </div>
+        </div>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory"
+          aria-expanded="false" aria-controls="collapseCategory">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Categories</span>
+        </a>
+
+        <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-bs-parent="#accordionSidebar">
+          <div class="text-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="add-category">Add Category</a>
+            <a class="collapse-item" routerLink="categories-list">Category List</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" type="button" data-bs-toggle="collapse" data-bs-target="#accordionSidebar"
+            aria-expanded="true" aria-controls="accordionSidebar" class="btn btn-link d-md-none  mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Navbar -->
+          <a class="navbar-brand" routerLink="">
+            <img src="logo.png" alt="" class="" width="38px">
+          </a>
+          <ul class="navbar-nav ml-auto">
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{User.name}}</span>
+                <img class="img-profile rounded-circle" [src]="User.image">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              
+                <!-- <div class="dropdown-divider"></div> -->
+                <a class="dropdown-item" type="button" (click)="logOut()">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid ">
+
+          <router-outlet></router-outlet>
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+ 
+ 
+
+
+
+
+</body>
+
+</html>

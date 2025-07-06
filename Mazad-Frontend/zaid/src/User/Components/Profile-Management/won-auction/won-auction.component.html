@@ -1,0 +1,64 @@
+<div class="container container-custom">
+  <div *ngIf="!wonAuctions || wonAuctions.length === 0" class="d-flex justify-content-center  border-bottom border-3 pb-4">
+      <div class=" fw-bold opacity-75"><h5>There is no thing to show.</h5></div>
+  </div>
+</div>
+
+<div class="container container-custom">
+  <div *ngIf="wonAuctions.length !== 0" class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Seller</th>
+          <th scope="col">Total price</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let auction of wonAuctions| paginate: { itemsPerPage: 6, currentPage: page };let i=index;">
+          <td>
+            <div class="d-flex align-items-center">
+              <div id="carouselExample{{i}}" class="carousel slide w-75">
+                <div class="carousel-inner">
+                  <div *ngFor="let image of auction.imageUrl; let j = index" [class.active]="j === 0"
+                  class="carousel-item" style="cursor: pointer;">
+                  <img [src]="image"
+                     class="d-block w-100 rounded-2">
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExample' + i"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselExample' + i"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </td>
+
+          <td>{{auction.sellerName}}</td>
+          <td>{{auction.totalPrice}}</td>
+          <td >
+            <a *ngIf="auction.shippingStatus == 3 && !auction.isReviewd"  [routerLink]="['/user/add-review', auction.auctionID]">Add Review</a>
+            <a *ngIf="!auction?.completed && auction.shippingStatus === 0"  [routerLink]="['/action/won-auction', auction.itemID]">Complete Payment</a>
+<span *ngIf="auction?.shippingStatus === 1">Pending</span>
+
+<span *ngIf="auction?.shippingStatus === 2">OnTheWay</span>
+<span *ngIf="auction?.shippingStatus == null">Waiting for Shipping</span>
+
+<a *ngIf="auction?.shippingStatus === 4" [routerLink]="['/user/complain-add']">Add Complaint</a>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event" ></pagination-controls>
+
+  </div>
+</div>
+
+
+

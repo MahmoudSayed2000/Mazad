@@ -1,0 +1,22 @@
+
+.rating {
+    display: inline-block; /* Align stars in a row */
+}
+
+.rating label {
+    cursor: pointer; /* Make stars clickable */
+}
+
+.rating input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+}
+
+.rating i {
+    font-size: 30px; /* Adjust the star size */
+    color: lightgray; /* Default star color */
+    transition: color 0.2s; /* Smooth color transition */
+}
+
+.rating i.filled {
+    color: gold; /* Color for filled stars */
+}
